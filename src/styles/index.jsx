@@ -42,7 +42,7 @@ SearchCtn.MoviesList = function SearchCtnMoviesList({ children, category, ...res
     )
   return (
     <MoviesList {...restProps}>
-      <label className="listtitle">Movie Title</label>
+      <label className="listtitle">Movie Category</label>
       <div className="movies-ctn">
         <div className="movie-item">Martyr of The Mighty</div>
         <div className="movie-item">Martyr of The Mighty</div>

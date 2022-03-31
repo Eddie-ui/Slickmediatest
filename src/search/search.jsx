@@ -7,6 +7,8 @@ const SearchPage = () => {
     t: "",
     apikey: "aa6b1ac7",
   });
+  const [searchStart, setSearchStart] = useState(false);
+  const [loader, setLoader] = useState(false);
   const HandleInputChangeKey = (target) => {
     setSearchFormData((prev) => ({
       ...prev,
@@ -16,24 +18,25 @@ const SearchPage = () => {
     console.log("input key changed", searchFormData);
   };
   const InitSearch = async (e) => {
+    setLoader(true)
+    setSearchStart(true)
     e.preventDefault();
-    console.log("all info", searchFormData);
-    if (true) {
-      return await postRequest(searchFormData)
-        .then((res) => {
-          console.log("res", res);
-        })
-        .catch((error) => {});
-    }
+    console.log("all info", searchFormData, "loader", loader);
+    // if (true) {
+    //   return await postRequest(searchFormData)
+    //     .then((res) => {
+    //       console.log("res", res);
+    //     })
+    //     .catch((error) => {});
+    // }
   };
   return (
     <>
       <SearchCtn>
         <SearchCtn.Nav />
         <SearchCtn.Hero />
-        <Form onChange={InitSearch}>
+        <Form onKeyUp={InitSearch}>
           <div className="form-ctn">
-       
             <label for="searchbar">Search</label>
             <input
               id="searchbar"
@@ -43,7 +46,18 @@ const SearchPage = () => {
               onChange={({ target }) => {
                 HandleInputChangeKey(target);
               }}
+              autoFocus={true}
             />
+
+            <ul className={searchStart ? "dropdown-menu show" : "dropdown"}>
+              {loader ? (
+                <div className="loader-ctn">
+                  <div className="spinner-border text-secondary" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                </div>
+              ) : ""}
+            </ul>
           </div>
         </Form>
         <SearchCtn.MoviesList category="action" />
@@ -55,7 +69,7 @@ const SearchPage = () => {
 
 export default SearchPage;
 
-export const postRequest = ( payload) => {
+export const postRequest = (payload) => {
   var headers = {
     "Content-Type": "application/json",
   };

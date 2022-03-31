@@ -80,6 +80,19 @@ export const Form = styled.form`
   input {
     height: 54px;
     width: 100%;
+    font-size: 20px;
+    padding: 0 20px;
+  }
+  .loader-ctn {
+    min-height: 100px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .dropdown-menu {
+    width: 88.5%;
+    min-height: 100px;
   }
   .form-ctn {
     margin: 0px 77px;
@@ -98,6 +111,7 @@ export const Form = styled.form`
     }
     input {
       height: 34px;
+      font-size: 16px;
     }
     .form-ctn {
       margin: 0px 28px;
