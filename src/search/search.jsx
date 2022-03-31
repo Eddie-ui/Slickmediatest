@@ -5,10 +5,17 @@ import { Form } from "../styles/styles";
 const SearchPage = () => {
   const [searchFormData, setSearchFormData] = useState({
     t: "",
+    
     apikey: "aa6b1ac7",
   });
+  const test = {
+  
+    i: "tt3896198",
+    apikey: "aa6b1ac7",
+  };
   const [searchStart, setSearchStart] = useState(false);
   const [loader, setLoader] = useState(false);
+  const [searchData, setSearchData] = useState({});
   const HandleInputChangeKey = (target) => {
     setSearchFormData((prev) => ({
       ...prev,
@@ -22,13 +29,17 @@ const SearchPage = () => {
     setSearchStart(true)
     e.preventDefault();
     console.log("all info", searchFormData, "loader", loader);
-    // if (true) {
-    //   return await postRequest(searchFormData)
-    //     .then((res) => {
-    //       console.log("res", res);
-    //     })
-    //     .catch((error) => {});
-    // }
+    if (true) {
+      return await postRequest(test)
+        .then((res) => {
+           setLoader(false);
+          console.log("res", res);
+
+        })
+        .catch((error) => {
+           setLoader(false);
+        });
+    }
   };
   return (
     <>
@@ -48,7 +59,8 @@ const SearchPage = () => {
               }}
               autoFocus={true}
             />
-
+            <p className="d-none">Cant use the api, it says i have to become a patron which i have tried and the web doesnt load, also i dont see how i can apply this api to fetch by category when the api only fetches one search result
+            </p>
             <ul className={searchStart ? "dropdown-menu show" : "dropdown"}>
               {loader ? (
                 <div className="loader-ctn">
@@ -57,6 +69,7 @@ const SearchPage = () => {
                   </div>
                 </div>
               ) : ""}
+             
             </ul>
           </div>
         </Form>
@@ -70,10 +83,6 @@ const SearchPage = () => {
 export default SearchPage;
 
 export const postRequest = (payload) => {
-  var headers = {
-    "Content-Type": "application/json",
-  };
-  return axios.post("http://www.omdbapi.com", JSON.stringify(payload), {
-    headers: headers,
-  });
+  
+  return axios.post("https://www.omdbapi.com", JSON.stringify(payload));
 };
