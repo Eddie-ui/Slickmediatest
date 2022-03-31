@@ -85,10 +85,9 @@ const SearchPage = () => {
               autoFocus={true}
             />
             <p className="d-none">
-              i couldnt use this api, as it says i have to become a patron which
-              i have tried and the web doesnt load, also i dont see how i can
+              i couldnt use this api, because i dont see how i can
               apply this api to fetch by category when the api only fetches one
-              search result , wink wink, you found the easter egg in my code
+              search result
             </p>
             <ul className={searchStart ? "dropdown-menu show" : "dropdown"}>
               {loader ? (
